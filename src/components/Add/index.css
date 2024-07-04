@@ -1,0 +1,14 @@
+.add-bg-container {
+    margin-top: 50px;
+    padding: 30px;
+    width: 500px;
+}
+
+.add-bg-container form input {
+    margin-bottom: 10px;
+    padding-left: 4px;
+    width: 200px;
+    height: 32px;
+    border-radius: 6px;
+    outline: none;
+}

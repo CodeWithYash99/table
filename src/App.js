@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState } from "react";
 
-function App() {
+import { Routes, Route, useNavigate } from "react-router-dom";
+
+import Add from "./components/Add";
+import View from "./components/View";
+
+import "./App.css";
+
+export const store = createContext();
+
+const App = () => {
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
+  const getEditItem = (id) => {
+    const item = data.find((item) => item.id === id);
+    console.log(item);
+    navigate('/');
+  };
+
+  const getDelItem = (id) => {
+    setData(data.filter((item) => item.id!== id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <store.Provider value={[data, setData]}>
+      <div className="App-container d-flex flex-column align-items-center">
+        <Routes>
+          <Route path="/" element={<Add />} />
+          <Route
+            path="/view"
+            element={<View getEditItem={getEditItem} getDelItem={getDelItem} />}
+          />
+        </Routes>
+      </div>
+    </store.Provider>
   );
-}
+};
 
 export default App;

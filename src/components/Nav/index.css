@@ -1,0 +1,11 @@
+.nav-bg-container {
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+.nav-bg-container .link {
+    color: #000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+}
